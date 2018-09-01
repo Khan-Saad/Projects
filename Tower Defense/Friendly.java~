@@ -1,0 +1,99 @@
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
+import java.io.*;
+public class Friendly extends Character
+{ 
+  private BufferedImage img = null;
+  String pic;
+  private int ar = 150;
+  private int br = 150;
+  
+  public Friendly(String str, int a, int b)
+  {
+    x=a;
+    y=b;
+    readType(str);
+    if (str == "Mage"){
+      range = 70;
+    }else if(str == "Archer"){
+     range = 100; 
+      
+    }else if(str == "AxeWielder"){
+     range = 30; 
+      
+    }else if(str == "Swordsman"){
+     range = 50; 
+      
+    }
+    
+    try
+    {
+      img = ImageIO.read(new File(pic));
+    } catch (IOException e)
+    {
+      System.out.println("No Image");
+    }
+  }
+  public void paint(Graphics2D g)
+  {
+    g.drawImage(img, x, y, null);
+  }
+  
+  public static boolean attack(Enemy a, Friendly b)
+  {
+      if (a.getX() <= (b.getX()-b.range) + (b.range * 2) + 35 && a.getX() >= b.getX() - b.range && a.getY() >= b.getY() - b.range && a.getY() <= (b.getY() - b.range) + (b.range * 2) + 35){
+        //Range of each attacking character
+      return true;
+      }else{
+        return false;
+      }
+
+  }
+  
+  public int getX()
+  {
+    return x;
+  }
+  
+  public int getY()
+  {
+    return y;
+  }
+  public void move()
+  {
+    x=50;
+    y=50;
+  }
+  
+   private void readType(String a)
+  {
+    if (a=="Mage")
+    {
+      pic="Mage.png";
+      attackPower=30;
+    }     
+    if (a=="Archer")
+    {
+      pic="Archer.png";
+      attackPower=25;
+    }
+        if (a=="Swordsman")
+    {
+      pic="Swordsman.png";
+      attackPower=35;
+    }
+        if (a=="AxeWielder")
+    {
+      pic="AxeWielder.png";
+      attackPower=50;
+    }
+        if (a=="Lancer")
+    {
+      pic="Lancer.png";
+      attackPower=35;
+    }
+    
+  }
+}
+  

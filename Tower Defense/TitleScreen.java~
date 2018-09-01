@@ -1,0 +1,25 @@
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
+import java.io.*;
+import java.awt.*;
+public class TitleScreen
+{
+  private BufferedImage img = null;
+  
+   public TitleScreen()
+  {
+     try
+    {
+      img = ImageIO.read(new File("titlescreen.png"));
+    } catch (IOException e)
+    {
+      System.out.println("No Image");
+    }
+    
+  }
+  
+ public void paint(Graphics2D g)
+  {
+    g.drawImage(img, 0, 0, null);
+  }
+  }

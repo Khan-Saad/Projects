@@ -1,0 +1,18 @@
+import java.awt.*;
+//abstract class for characters
+public abstract class Character {
+
+protected int attackPower;
+protected int attackSpeed;
+protected int cost;
+protected int x; 
+protected int y;
+protected int range;
+
+
+
+public abstract void paint(Graphics2D g);
+
+
+
+}
