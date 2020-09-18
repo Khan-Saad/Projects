@@ -1,13 +1,14 @@
-
 from twilio.rest import Client
+import os
 
-account_sid = 'nope'
-auth_token = 'nope'
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_ACCOUNT_AUTH_TOKEN']
+
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
         body="Join Earth's mightiest heroes. Like Kevin Bacon.",
-        from_='+15342203741',
+        from_='+13605870947',
         to='+16472192778'
         )
 
